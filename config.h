@@ -80,7 +80,10 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
+
+/* bg opacity */
+float alpha = 0.9;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -89,7 +92,7 @@ static const char *colorname[] = {
 	"#ff2929",
 	"#7ad822",
 	"#ffd000",
-	"#348dff",
+	"#5c5cff",
 	"#ff3bff",
 	"#4ad7d9",
 	"#E6E6E6",
@@ -99,7 +102,7 @@ static const char *colorname[] = {
 	"#fa6b6b",
 	"#b6ff6e",
 	"#ffcc97",
-	"#5c5cff",
+	"#348dff",
 	"#ff89ff",
 	"#8dffff",
 	"#ffffff",
@@ -109,6 +112,7 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+	"black",
     "#1e1e1e",
     "#E6E6E6"
 };
@@ -118,8 +122,8 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 259;
-unsigned int defaultbg = 258;
+unsigned int defaultfg = 260;
+unsigned int defaultbg = 259;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -172,8 +176,8 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	{ TERMMOD,              XK_i,       zoom,           {.f = +1} },
+	{ TERMMOD,              XK_o,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
